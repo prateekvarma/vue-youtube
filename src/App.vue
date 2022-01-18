@@ -1,9 +1,13 @@
 <template>
-    <h4>Hello Vue!</h4>
+    <SearchBar></SearchBar>
 </template>
 
 <script>
+import SearchBar from './components/SearchBar';
 export default {
-    name: 'App'
+    name: 'App',
+    components: {
+        SearchBar
+    }
 };
 </script>
