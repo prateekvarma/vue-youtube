@@ -1,21 +1,27 @@
 <template>
-    <SearchBar v-on:termChange="onTermChange"></SearchBar>
+    <div>
+        <SearchBar v-on:termChange="onTermChange"></SearchBar>
+        <VideoList></VideoList>
+    </div>
 </template>
 
 <script>
 import SearchBar from './components/SearchBar';
+import VideoList from './components/VideoList';
+
 import axios from 'axios';
 const API_KEY = 'XXX'; //get from google dev console
 
 export default {
     name: 'App',
     components: {
-        SearchBar
+        SearchBar,
+        VideoList
     },
     methods: {
         //the searchTerm below is the 2nd argument from the 'onInput' function in SearchBar.vue
         onTermChange(searchTerm) {
-            axios.get('https://googleapis.com/youtube/v3/search', {
+            axios.get('https://www.googleapis.com/youtube/v3/search', {
                 params: {
                     key: API_KEY,
                     type: 'video',
