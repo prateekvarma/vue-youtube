@@ -22,7 +22,7 @@ export default {
                     part: 'snippet',
                     q: searchTerm
                 }
-            });
+            }).then(response => console.log(response));
         }
     }
 };
