@@ -2,6 +2,7 @@
     <div>
         <SearchBar v-on:termChange="onTermChange"></SearchBar>
         <VideoList></VideoList>
+        {{ videos.length }}
     </div>
 </template>
 
@@ -18,6 +19,11 @@ export default {
         SearchBar,
         VideoList
     },
+    data() {
+        return {
+            videos: []
+        };
+    },
     methods: {
         //the searchTerm below is the 2nd argument from the 'onInput' function in SearchBar.vue
         onTermChange(searchTerm) {
@@ -28,7 +34,11 @@ export default {
                     part: 'snippet',
                     q: searchTerm
                 }
-            }).then(response => console.log(response));
+            }).then(response => {
+                console.log(response);
+                this.videos = response.data.items;
+                //the data.items object variables can be found by console logging the response object
+            });
         }
     }
 };
