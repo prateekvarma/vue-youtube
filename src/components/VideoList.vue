@@ -1,12 +1,16 @@
 <template>
     <ul>
-        <h4>Video List has {{ videos.length }} videos</h4>
+        <VideoListItem v-for="video in videos" :key="video"></VideoListItem>
     </ul>
 </template>
 
 <script>
+import VideoListItem from './VideoListItem';
 export default {
     name: 'VideoList',
+    components: {
+        VideoListItem
+    },
     props: ['videos']
 };
 </script>
