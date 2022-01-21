@@ -1,7 +1,7 @@
 <template>
     <div>
         <SearchBar v-on:termChange="onTermChange"></SearchBar>
-        <VideoList v-bind:videos="videos"></VideoList>
+        <VideoList v-bind:videos="videos" @videoSelect="onVideoSelect"></VideoList>
     </div>
 </template>
 
@@ -34,10 +34,12 @@ export default {
                     q: searchTerm
                 }
             }).then(response => {
-                console.log(response);
                 this.videos = response.data.items;
                 //the data.items object variables can be found by console logging the response object
             });
+        },
+        onVideoSelect(video) {
+            console.log(video);
         }
     }
 };
